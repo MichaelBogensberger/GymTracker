@@ -1,0 +1,18 @@
+.db-main-icon {
+  width: 100px;
+}
+
+.db-main-card {
+  height: 240px;
+}
+
+.db-main-h2{
+    font-size: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .db-main-h1 {
+    font-size: 25px;
+    color: white;
+  }
+}
