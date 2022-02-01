@@ -79,6 +79,22 @@
 
     <ion-searchbar animated ></ion-searchbar>
 
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="all">
+        <ion-label>All</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="pull">
+        <ion-label>Pull</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="push">
+        <ion-label>Push</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="leg">
+        <ion-label>leg</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+
 
     <ion-card>
           <ion-card-content>
