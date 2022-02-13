@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrieren</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-slides pager="true" [options]="slideOpts" #slides> 
+    <ion-slide>
+      <h1>Gym Tracker</h1>
+      <ion-card-content>
+        <img class="main-img" src="assets/images/fitness-apps.png" />
+      </ion-card-content>
+      <ion-button expand="block" shape="round" fill="outline" (click)="slides.slideNext()">Getting Started</ion-button>
+    </ion-slide>
+    <ion-slide>
+
+      <ion-card-content>
+        <ion-item class="sl-inp-item">
+          <ion-label>Vorname: </ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-item class="sl-inp-item"> 
+          <ion-label>Nachname: </ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-item class="sl-inp-item">
+          <ion-label>Passwort: </ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-item class="sl-inp-item">
+          <ion-label>Email: </ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-button expand="block" shape="round" fill="outline" class="btn-con" (click)="slides.slideNext()">weiter</ion-button>
+    </ion-slide>
+
+
+    <ion-slide>
+      <ion-card-content>
+        <ion-item class="sl-inp-item">
+          <ion-label>Größe: </ion-label>
+          <ion-input type="number" inputmode="numeric"></ion-input>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-item class="sl-inp-item"> 
+          <ion-label>Gewicht: </ion-label>
+          <ion-input type="number" inputmode="numeric"></ion-input>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-item class="sl-inp-item">
+          <ion-label>Geburtsdatum: </ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-button expand="block" shape="round" fill="outline" class="btn-con" (click)="slides.slideNext()">weiter</ion-button>
+
+    </ion-slide>
+
+    <ion-slide>
+
+      <ion-card-content>
+      <ion-item class="sl-inp-item">
+        <ion-label>Tage im Gym</ion-label>
+        <ion-select multiple="true" cancelText="Cancel" okText="Submit">
+          <ion-select-option value="1">Montag</ion-select-option>
+          <ion-select-option value="2">Dienstag</ion-select-option>
+          <ion-select-option value="3">Mittwoch</ion-select-option>
+          <ion-select-option value="4">Donnerstag</ion-select-option>
+          <ion-select-option value="5">Freitag</ion-select-option>
+          <ion-select-option value="6">Samstag</ion-select-option>
+          <ion-select-option value="7">Sonntag</ion-select-option>
+        </ion-select>
+      </ion-item>
+      </ion-card-content>
+
+      <ion-card-content>
+      <ion-item class="sl-inp-item">
+        <ion-label>Split</ion-label>
+        <ion-select cancelText="Cancel" okText="Submit">
+          <ion-select-option value="1">1 Tag im Gym</ion-select-option>
+          <ion-select-option value="2">2er Split</ion-select-option>
+          <ion-select-option value="3">3er Split</ion-select-option>
+          <ion-select-option value="4">4er Split</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+
+      <ion-button expand="block" shape="round" fill="outline" class="btn-con">Finish</ion-button>
+
+    </ion-slide>
+
+
+  </ion-slides>
+</ion-content>
