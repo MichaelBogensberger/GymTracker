@@ -1,5 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { throwError } from 'rxjs';
+
 
 
 @Component({
@@ -17,7 +20,9 @@ export class RegisterPage implements OnInit {
   private split4 = false;
 
 
-  constructor() {}
+
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
     this.formData = new FormGroup({
@@ -79,8 +84,40 @@ export class RegisterPage implements OnInit {
   }
 
 
+
   onSubmit() {
     console.log(this.formData.value);
+
+
+    
+
+
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json; charset=UTF-8')
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+      .set('Access-Control-Allow-Headers','*')
+      .set('Access-Control-Expose-Headers', 'Content-Type, Authorization, X-Requested-With"')
+      .set('Access-Control-Allow-Credential', 'true')
+      .set('Access-Control-Max-Age', '86400')
+      
+
+      .set('firstname', 'firstnameU')
+      .set('lastname', 'LastnameU')
+      .set('email', 'test@gmail.at')
+      .set('password', '123')
+      .set('username', 'testuser');
+
+    const b = {
+      status: 'CONFIRMED'
+    };
+    this.http.post('http://localhost:8080/api/createUser',null , { headers: headers }).toPromise().then((data:any) => {
+      console.log(data)
+    });
+
+
+    
 
   }
 
