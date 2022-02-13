@@ -21,3 +21,28 @@ ion-slides {
     margin-top: 20px;
     width: 250px;
 }
+
+form {
+    height: 100%;;
+}
+
+.split{
+    display: none;
+}
+
+
+.display {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.spinnerCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+}
