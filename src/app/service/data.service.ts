@@ -19,7 +19,7 @@ export class DataService {
 
 
 
-  apiCreateUser(firstname, lastname, email, password, username) :Observable<IUser> {
+  apiCreateUser(firstname, lastname, email, password, username, height) :Observable<IUser> {
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json; charset=UTF-8')
@@ -27,13 +27,13 @@ export class DataService {
       .set('lastname', lastname)
       .set('email', email)
       .set('password', password)
-      .set('username', username);
+      .set('username', username)
+      .set('height', String(height));
 
 
     return this.http.post<IUser>(url + '/api/createUser',null , { headers: headers });
 
   }
-
 
 
 

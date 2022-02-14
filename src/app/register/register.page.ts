@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
+import { CookieService } from 'ngx-cookie-service';
 import { DataService } from '../service/data.service';
 
 
@@ -23,7 +24,10 @@ export class RegisterPage implements OnInit {
   public user;
 
 
-  constructor(private http: HttpClient, public loadingController: LoadingController, private dataService: DataService) {
+  constructor(private http: HttpClient, 
+    public loadingController: LoadingController,
+    private dataService: DataService,
+    private cookie: CookieService) {
   }
 
   ngOnInit() {
@@ -108,12 +112,16 @@ export class RegisterPage implements OnInit {
       this.formData.value.lastname,
       this.formData.value.email,
       this.formData.value.password,
-      this.formData.value.username
+      this.formData.value.username,
+      this.formData.value.height
       ).subscribe(data => {
-
-        this.user = data
+        this.user = data;
         console.log(this.user);
+        this.cookie.set("userid", this.user.id);
       });
+
+
+
 
     //console.log("FERTIG ->");
     //console.log(this.user);
