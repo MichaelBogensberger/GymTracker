@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
-import { throwError } from 'rxjs';
+import { DataService } from '../service/data.service';
 
 
 
@@ -20,13 +20,16 @@ export class RegisterPage implements OnInit {
   private split3 = false;
   private split4 = false;
 
+  public user;
 
 
-  constructor(private http: HttpClient, public loadingController: LoadingController) {
+  constructor(private http: HttpClient, public loadingController: LoadingController, private dataService: DataService) {
   }
 
   ngOnInit() {
+
     this.formData = new FormGroup({
+      username: new FormControl(),
       firstname: new FormControl(),
       lastname: new FormControl(),
       password: new FormControl(),
@@ -40,6 +43,7 @@ export class RegisterPage implements OnInit {
       split3: new FormControl(),
       split4: new FormControl()
     });
+
   }
 
   onSelectChange() {
@@ -86,24 +90,6 @@ export class RegisterPage implements OnInit {
 
 
 
-  apiCreateUser() {
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json; charset=UTF-8')
-      .set('firstname', 'firstnameU')
-      .set('lastname', 'LastnameU')
-      .set('email', 'test@gmail.at')
-      .set('password', '123')
-      .set('username', 'testuser');
-
-    this.http.post('http://localhost:8080/api/createUser',null , { headers: headers }).toPromise().then((data:any) => {
-      console.log(data)
-    });
-
-  }
-
-
-
 
 
   async onSubmit() {
@@ -113,8 +99,31 @@ export class RegisterPage implements OnInit {
     });
     await loading.present();
 
-    console.log(this.formData.value);
-    this.apiCreateUser();
+    //console.log(this.formData.value);
+
+
+    //let data = this.dataService.apiCreateUser('firs', 'asd', 'ss', 'sd', 'sd');
+
+    this.dataService.apiCreateUser(this.formData.value.firstname,
+      this.formData.value.lastname,
+      this.formData.value.email,
+      this.formData.value.password,
+      this.formData.value.username
+      ).subscribe(data => {
+
+        this.user = data
+        console.log(this.user);
+      });
+
+    //console.log("FERTIG ->");
+    //console.log(this.user);
+
+    //console.log(JSON.stringify(data));
+
+
+
+
+
 
     await loading.dismiss();
 
