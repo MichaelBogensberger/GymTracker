@@ -32,6 +32,12 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
 
+    if(this.cookie.get("token") != null) {
+      console.log("Token ist nicht null");
+      window.location.href = '/login';
+    }
+
+
     this.formData = new FormGroup({
       username: new FormControl(),
       firstname: new FormControl(),
