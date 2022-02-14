@@ -116,8 +116,21 @@ export class RegisterPage implements OnInit {
       this.formData.value.height
       ).subscribe(data => {
         this.user = data;
-        console.log(this.user);
+        //console.log(this.user);
         this.cookie.set("userid", this.user.id);
+
+
+        this.dataService.apiLogin(this.formData.value.username,
+          this.formData.value.password).subscribe(data => {
+              console.log(data.token);
+              this.cookie.set("token", data.token);
+              console.log("TOKEN COOKIE --->");
+              console.log(this.cookie.get("token"));
+              
+
+          });
+
+
       });
 
 

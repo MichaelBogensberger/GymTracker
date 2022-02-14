@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IToken } from '../interfaces/token';
 import { IUser } from '../interfaces/user';
 
 
@@ -35,6 +36,19 @@ export class DataService {
 
   }
 
+  apiLogin(username, password) :Observable<IToken> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+
+    const body = {
+      username: username,
+      password: password
+    }
+
+    return this.http.post<IToken>(url + '/api/login', body);
+
+  }
 
 
 
