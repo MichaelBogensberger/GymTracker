@@ -32,8 +32,10 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
 
-    if(this.cookie.get("token") != null) {
+
+    if(this.cookie.get("token") !== "") {
       console.log("Token ist nicht null");
+      //alert(this.cookie.get("token"));
       window.location.href = '/login';
     }
 
