@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<!-- List of Input Items -->
+<ion-list>
+
+
+
+  <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+  <ion-card-content>
+    <ion-item>
+      <ion-label>Name: </ion-label>
+      <ion-input required type="text" formControlName="name"></ion-input>
+    </ion-item>
+  </ion-card-content>
+
+  <ion-card-content>
+    <ion-item>
+      <ion-label>Gewicht: </ion-label>
+      <ion-input required type="number"  formControlName="gewicht" ></ion-input>
+    </ion-item>
+  </ion-card-content>
+
+  <ion-card-content>
+    <ion-item>
+      <ion-label>Reps: </ion-label>
+      <ion-input required type="number"  formControlName="reps"></ion-input>
+    </ion-item>
+  </ion-card-content>
+
+  <ion-card-content>
+    <ion-item>
+      <ion-label>Sets: </ion-label>
+      <ion-input required type="number" formControlName="sets"></ion-input>
+    </ion-item>
+  </ion-card-content>
+
+  <ion-button expand="block" color="primary" (click)="updateExercise()">
+    <ion-icon name="save" slot="start"></ion-icon>
+    Update
+  </ion-button>
+
+
+  <ion-button expand="block" color="danger" (click)="deleteExercise()" >
+    <ion-icon name="trash" slot="start"></ion-icon>
+    Delete
+  </ion-button>
+
+</form>
+
+
+</ion-list>
+
+
+
+</ion-content>

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
+import { ModalPage } from '../modal/modal.page';
 import { DataService } from '../service/data.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -15,10 +17,11 @@ export class Tab1Page {
   bmi_text = "";
   public exercises = [];
 
+
   constructor(private dataService: DataService,
     private cookie: CookieService,
     private modalCtrl: ModalController,
-    private alertCtrl: AlertController,) {}
+    private alertCtrl: AlertController) {}
 
 
   ngOnInit() {
@@ -29,6 +32,7 @@ export class Tab1Page {
     }
     
     this.updateExercises();
+
 
 
     this.dataService.apiGetUserFromAuth(this.cookie.get("token")).subscribe(data => {
@@ -119,7 +123,7 @@ export class Tab1Page {
 
 
 
-
+  
   updateExercises() {
     this.dataService.apiGetAllExercises(this.cookie.get("userid"),
     this.cookie.get("token")
@@ -128,7 +132,26 @@ export class Tab1Page {
       console.log(data);
     })
   }
+  
 
+
+
+
+  async openExercise(exercise) {
+    const modal = await this.modalCtrl.create({
+      component: ModalPage,
+      componentProps: {exercise},
+      breakpoints: [0, 0.55, 0.8],
+      initialBreakpoint: 0.55
+    });
+
+    modal.onDidDismiss()
+    .then((data) => {
+      this.updateExercises();
+  });
+
+    modal.present();
+  }
 
 
 

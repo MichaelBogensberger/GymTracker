@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { IToken } from '../interfaces/token';
 import { IUser } from '../interfaces/user';
@@ -15,7 +16,8 @@ var user;
 })
 export class DataService {
 
-  constructor(private http: HttpClient) { 
+
+  constructor(private http: HttpClient,private cookie: CookieService) { 
   }
 
 
@@ -124,6 +126,34 @@ export class DataService {
     .set('Authorization', authorization)
     return this.http.get<any>(url + '/api/user/'+String(id)+'/exercise', { headers: headers });
   }
+
+
+  apiEditExercise(id, gewicht, name, sets, reps, authorization, exercise_id) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization)
+    .set('gewicht', String(gewicht))
+    .set('name', String(name))
+    .set('sets', String(sets))
+    .set('reps', String(reps));
+
+    return this.http.put<any>(url + '/api/user/'+id+'/exercise/'+exercise_id, null, { headers: headers });
+  }
+
+  apiDeleteExercise(exercise_id, authorization) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization);
+
+    return this.http.delete<any>(url + '/api/exercise/'+exercise_id, { headers: headers });
+  }
+
+
+
+
+
 
 
 

@@ -102,7 +102,7 @@
   -->
 
 
-    <ion-card *ngFor="let model of exercises">
+    <ion-card *ngFor="let model of exercises" (click)="openExercise(model)">
           <ion-card-content>
             <h1 class="db-main-h1">{{model.name}}</h1>
             <h2 class="db-main-h2">{{model.gewicht}} kg</h2>
