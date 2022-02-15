@@ -75,6 +75,15 @@ export class DataService {
   }
 
 
+  apiCalcBMI(id, authorization) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization)
+
+    return this.http.post<any>(url + '/api/user/'+id+'/calcBMI', null, { headers: headers });
+  }
+
 
 
 
