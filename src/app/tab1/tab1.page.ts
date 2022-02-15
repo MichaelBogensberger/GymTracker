@@ -3,6 +3,7 @@ import { AlertController, ModalController } from '@ionic/angular';
 import { CookieService } from 'ngx-cookie-service';
 import { ModalPage } from '../modal/modal.page';
 import { DataService } from '../service/data.service';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 
 @Component({
@@ -16,6 +17,8 @@ export class Tab1Page {
   public weight;
   bmi_text = "";
   public exercises = [];
+
+  searchTerm: string;
 
 
   constructor(private dataService: DataService,

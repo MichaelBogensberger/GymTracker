@@ -7,7 +7,8 @@ import { IUser } from '../interfaces/user';
 
 
 
-const url = "http://localhost:8080";
+//const url = "http://localhost:8080";
+const url = "http://mbogensberger.synology.me:55896";
 var user;
 
 
