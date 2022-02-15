@@ -16,6 +16,11 @@ export class RegisterPage implements OnInit {
   private formData: FormGroup;
   selected_option: string;
 
+  
+  today = new Date().toJSON().slice(0,10).replace(/-/g,'-');
+
+
+
   private split1 = false;
   private split2 = false;
   private split3 = false;
@@ -31,6 +36,7 @@ export class RegisterPage implements OnInit {
   }
 
   ngOnInit() {
+    //console.log("today:" + this.today);
 
 
     if(this.cookie.get("token") !== "") {
@@ -48,7 +54,7 @@ export class RegisterPage implements OnInit {
       email: new FormControl(),
       height: new FormControl(),
       weight: new FormControl(),
-      days: new FormControl(),
+      //days: new FormControl(),
       split: new FormControl(),
       split1: new FormControl(),
       split2: new FormControl(),
@@ -134,6 +140,131 @@ export class RegisterPage implements OnInit {
               this.cookie.set("token", data.token);
               console.log("TOKEN COOKIE --->");
               console.log(this.cookie.get("token"));
+
+
+              this.dataService.apiAddWeight(
+                this.cookie.get("userid"),
+                this.formData.value.weight,
+                this.today,
+                this.cookie.get("token")).subscribe(data => {
+                  console.log(data);
+              })
+
+
+              if(this.formData.value.split1 !== null
+                && this.formData.value.split2 == null
+                && this.formData.value.split3 == null
+                && this.formData.value.split4 == null) {
+                
+                this.dataService.apiAddPlan(
+                  this.cookie.get("userid"),
+                  this.formData.value.split1,
+                  "1",
+                  this.cookie.get("token")
+                ).subscribe(data => {
+                  window.location.href = '/main/tabs/tab1';
+                })
+
+              } else if (this.formData.value.split1 !== null 
+                && this.formData.value.split2 !== null
+                && this.formData.value.split3 == null
+                && this.formData.value.split4 == null) {
+
+
+                  this.dataService.apiAddPlan(
+                    this.cookie.get("userid"),
+                    this.formData.value.split1,
+                    "1",
+                    this.cookie.get("token")
+                  ).subscribe(data => {
+                   
+                    this.dataService.apiAddPlan(
+                      this.cookie.get("userid"),
+                      this.formData.value.split2,
+                      "2",
+                      this.cookie.get("token")
+                    ).subscribe(data => {
+                      window.location.href = '/main/tabs/tab1';
+                    })
+                  })
+
+
+                }
+                else if (this.formData.value.split1 !== null 
+                && this.formData.value.split2 !== null
+                && this.formData.value.split3 !== null
+                && this.formData.value.split4 == null) {
+
+                  this.dataService.apiAddPlan(
+                    this.cookie.get("userid"),
+                    this.formData.value.split1,
+                    "1",
+                    this.cookie.get("token")
+                  ).subscribe(data => {
+                   
+                    this.dataService.apiAddPlan(
+                      this.cookie.get("userid"),
+                      this.formData.value.split2,
+                      "2",
+                      this.cookie.get("token")
+                    ).subscribe(data => {
+                      this.dataService.apiAddPlan(
+                        this.cookie.get("userid"),
+                        this.formData.value.split3,
+                        "3",
+                        this.cookie.get("token")
+                      ).subscribe(data => {
+                        window.location.href = '/main/tabs/tab1';
+                      })
+                    })
+                  })
+
+
+
+                } else if (this.formData.value.split1 !== null 
+                  && this.formData.value.split2 !== null
+                  && this.formData.value.split3 !== null
+                  && this.formData.value.split3 !== null) {
+
+
+                    this.dataService.apiAddPlan(
+                      this.cookie.get("userid"),
+                      this.formData.value.split1,
+                      "1",
+                      this.cookie.get("token")
+                    ).subscribe(data => {
+                     
+                      this.dataService.apiAddPlan(
+                        this.cookie.get("userid"),
+                        this.formData.value.split2,
+                        "2",
+                        this.cookie.get("token")
+                      ).subscribe(data => {
+                        this.dataService.apiAddPlan(
+                          this.cookie.get("userid"),
+                          this.formData.value.split3,
+                          "3",
+                          this.cookie.get("token")
+                        ).subscribe(data => {
+                          this.dataService.apiAddPlan(
+                            this.cookie.get("userid"),
+                            this.formData.value.split4,
+                            "4",
+                            this.cookie.get("token")
+                          ).subscribe(data => {
+                            window.location.href = '/main/tabs/tab1';
+                          })
+          
+                        })
+                      })
+                    })
+
+
+                }
+
+
+
+
               
 
           });

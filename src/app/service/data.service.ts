@@ -51,6 +51,33 @@ export class DataService {
   }
 
 
+  apiAddWeight(id, weight, date, authorization) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization)
+    .set('weight', String(weight))
+    .set('weightDate', String(date));
+
+
+    return this.http.post<any>(url + '/api/user/'+id+'/weight', null, { headers: headers });
+  }
+
+
+  apiAddPlan(id, type, type_order, authorization) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization)
+    .set('type', String(type))
+    .set('type_order', String(type_order));
+    return this.http.post<any>(url + '/api/user/'+id+'/plan', null, { headers: headers });
+  }
+
+
+
+
+
 
 
 
