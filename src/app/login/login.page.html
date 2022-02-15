@@ -10,6 +10,8 @@
       <ion-col size="12">
 
         <h1>Gym Tracker</h1>
+        <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+
         <ion-card-content>
           <img class="main-img" src="assets/images/web-security.png" />
         </ion-card-content>
@@ -17,23 +19,24 @@
         <ion-card-content>
           <ion-item class="sl-inp-item">
             <ion-label>Username: </ion-label>
-            <ion-input required></ion-input>
+            <ion-input required formControlName="username"></ion-input>
           </ion-item>
         </ion-card-content>
 
         <ion-card-content>
           <ion-item class="sl-inp-item">
             <ion-label>Password: </ion-label>
-            <ion-input required></ion-input>
+            <ion-input type="password" required formControlName="password"></ion-input>
           </ion-item>
         </ion-card-content>
 
         <ion-card-content>
-        <ion-button color="primary" expand="block" class="btn-con">Login</ion-button>
+        <ion-button type="submit" color="primary" expand="block" class="btn-con">Login</ion-button>
         </ion-card-content>
          <a class="login-link" href="/">Registrieren</a>
+      </form>
 
-
+        
 
       </ion-col>
     </ion-row>

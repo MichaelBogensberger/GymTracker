@@ -85,6 +85,47 @@ export class DataService {
   }
 
 
+  apiGetUserFromAuth(authorization) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization)
+
+    return this.http.get<any>(url + '/api/user/', { headers: headers });
+  }
+
+  apiGetMostCurrentWeight(id, authorization) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization)
+    return this.http.get<any>(url + '/api/user/'+String(id)+'/currentWeight', { headers: headers });
+  }
+
+
+
+  apiAddExercise(id, gewicht, name, sets, reps, authorization) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization)
+    .set('gewicht', String(gewicht))
+    .set('name', String(name))
+    .set('sets', String(sets))
+    .set('reps', String(reps));
+
+    return this.http.post<any>(url + '/api/user/'+id+'/exercise', null, { headers: headers });
+  }
+
+  apiGetAllExercises(id, authorization) :Observable<any> {
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json; charset=UTF-8')
+    .set('Authorization', authorization)
+    return this.http.get<any>(url + '/api/user/'+String(id)+'/exercise', { headers: headers });
+  }
+
+
 
 
 

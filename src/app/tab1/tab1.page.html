@@ -17,7 +17,7 @@
     </ion-refresher>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button (click)="addExerciseAlert()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -35,8 +35,8 @@
           </ion-card-header>
 
           <ion-card-content>
-            <h1 class="db-main-h1">Mittwoch</h1>
-            <h2 class="db-main-h2">nächstes Workout</h2>
+            <h1 class="db-main-h1">Welcome</h1>
+            <h2 class="db-main-h2">{{user?.firstname}}<br>{{user?.lastname}}</h2>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -51,8 +51,8 @@
 
           <ion-card-content>
             <h1 class="db-main-h1">Stats</h1>
-            <h2 class="db-main-h2">81kg</h2>
-            <h2 class="db-main-h2">188cm</h2>
+            <h2 class="db-main-h2">{{weight}} kg</h2>
+            <h2 class="db-main-h2">{{user?.height}} cm</h2>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -63,8 +63,8 @@
         <ion-col size="8">
           <ion-card-content>
             <h1 class="db-main-h1">BMI</h1>
-            <h2 class="db-main-h2">28</h2>
-            <h2 class="db-main-h2">Normalgewicht</h2>
+            <h2 class="db-main-h2">{{user?.bmi}}</h2>
+            <h2 class="db-main-h2">{{bmi_text}}</h2>
           </ion-card-content>
           
         </ion-col>
@@ -84,6 +84,7 @@
 
     <ion-searchbar animated ></ion-searchbar>
 
+    <!--
     <ion-segment (ionChange)="segmentChanged($event)">
       <ion-segment-button value="all">
         <ion-label>All</ion-label>
@@ -98,22 +99,17 @@
         <ion-label>leg</ion-label>
       </ion-segment-button>
     </ion-segment>
+  -->
 
 
-
-    <ion-card>
+    <ion-card *ngFor="let model of exercises">
           <ion-card-content>
-            <h1 class="db-main-h1">Latzug</h1>
-            <h2 class="db-main-h2">55kg</h2>
+            <h1 class="db-main-h1">{{model.name}}</h1>
+            <h2 class="db-main-h2">{{model.gewicht}} kg</h2>
           </ion-card-content>
     </ion-card>
 
-    <ion-card>
-      <ion-card-content>
-        <h1 class="db-main-h1">Rudern</h1>
-        <h2 class="db-main-h2">40kg</h2>
-      </ion-card-content>
-    </ion-card>
+
 
 
 

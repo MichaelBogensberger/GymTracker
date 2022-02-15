@@ -20,12 +20,6 @@ export class RegisterPage implements OnInit {
   today = new Date().toJSON().slice(0,10).replace(/-/g,'-');
 
 
-
-  private split1 = false;
-  private split2 = false;
-  private split3 = false;
-  private split4 = false;
-
   public user;
 
 
@@ -54,57 +48,12 @@ export class RegisterPage implements OnInit {
       email: new FormControl(),
       height: new FormControl(),
       weight: new FormControl(),
-      //days: new FormControl(),
-      split: new FormControl(),
-      split1: new FormControl(),
-      split2: new FormControl(),
-      split3: new FormControl(),
-      split4: new FormControl()
+
     });
 
   }
 
-  onSelectChange() {
-    switch (this.selected_option) {
-      case '1':
-        this.split1 = true;
-        this.split2 = false;
-        this.split3 = false;
-        this.split4 = false;
 
-        this.formData.value.split2 = null;
-        this.formData.value.split3 = null;
-        this.formData.value.split4 = null;
-
-        break;
-
-      case '2':
-        this.split1 = true;
-        this.split2 = true;
-        this.split3 = false;
-        this.split4 = false;
-
-        this.formData.value.split3 = null;
-        this.formData.value.split4 = null;
-        break;
-
-      case '3':
-        this.split1 = true;
-        this.split2 = true;
-        this.split3 = true;
-        this.split4 = false;
-
-        this.formData.value.split4 = null;
-        break;
-
-      case '4':
-        this.split1 = true;
-        this.split2 = true;
-        this.split3 = true;
-        this.split4 = true;
-        break;
-    }
-  }
 
 
 
@@ -154,117 +103,7 @@ export class RegisterPage implements OnInit {
                     this.cookie.get("token")
                   ).subscribe(data => {
                     
-                    if(this.formData.value.split1 !== null
-                      && this.formData.value.split2 == null
-                      && this.formData.value.split3 == null
-                      && this.formData.value.split4 == null) {
-                      
-                      this.dataService.apiAddPlan(
-                        this.cookie.get("userid"),
-                        this.formData.value.split1,
-                        "1",
-                        this.cookie.get("token")
-                      ).subscribe(data => {
-                        window.location.href = '/main/tabs/tab1';
-                      })
-      
-                    } else if (this.formData.value.split1 !== null 
-                      && this.formData.value.split2 !== null
-                      && this.formData.value.split3 == null
-                      && this.formData.value.split4 == null) {
-      
-      
-                        this.dataService.apiAddPlan(
-                          this.cookie.get("userid"),
-                          this.formData.value.split1,
-                          "1",
-                          this.cookie.get("token")
-                        ).subscribe(data => {
-                         
-                          this.dataService.apiAddPlan(
-                            this.cookie.get("userid"),
-                            this.formData.value.split2,
-                            "2",
-                            this.cookie.get("token")
-                          ).subscribe(data => {
-                            window.location.href = '/main/tabs/tab1';
-                          })
-                        })
-      
-      
-                      }
-                      else if (this.formData.value.split1 !== null 
-                      && this.formData.value.split2 !== null
-                      && this.formData.value.split3 !== null
-                      && this.formData.value.split4 == null) {
-      
-                        this.dataService.apiAddPlan(
-                          this.cookie.get("userid"),
-                          this.formData.value.split1,
-                          "1",
-                          this.cookie.get("token")
-                        ).subscribe(data => {
-                         
-                          this.dataService.apiAddPlan(
-                            this.cookie.get("userid"),
-                            this.formData.value.split2,
-                            "2",
-                            this.cookie.get("token")
-                          ).subscribe(data => {
-                            this.dataService.apiAddPlan(
-                              this.cookie.get("userid"),
-                              this.formData.value.split3,
-                              "3",
-                              this.cookie.get("token")
-                            ).subscribe(data => {
-                              window.location.href = '/main/tabs/tab1';
-                            })
-                          })
-                        })
-      
-      
-      
-                      } else if (this.formData.value.split1 !== null 
-                        && this.formData.value.split2 !== null
-                        && this.formData.value.split3 !== null
-                        && this.formData.value.split3 !== null) {
-      
-      
-                          this.dataService.apiAddPlan(
-                            this.cookie.get("userid"),
-                            this.formData.value.split1,
-                            "1",
-                            this.cookie.get("token")
-                          ).subscribe(data => {
-                           
-                            this.dataService.apiAddPlan(
-                              this.cookie.get("userid"),
-                              this.formData.value.split2,
-                              "2",
-                              this.cookie.get("token")
-                            ).subscribe(data => {
-                              this.dataService.apiAddPlan(
-                                this.cookie.get("userid"),
-                                this.formData.value.split3,
-                                "3",
-                                this.cookie.get("token")
-                              ).subscribe(data => {
-                                this.dataService.apiAddPlan(
-                                  this.cookie.get("userid"),
-                                  this.formData.value.split4,
-                                  "4",
-                                  this.cookie.get("token")
-                                ).subscribe(data => {
-                                  window.location.href = '/main/tabs/tab1';
-                                })
-                
-                              })
-                            })
-                          })
-      
-      
-                      }
-
+                    window.location.href = '/main/tabs/tab1';
 
 
                   })

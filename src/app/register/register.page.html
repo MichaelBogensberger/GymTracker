@@ -72,74 +72,7 @@
       </ion-card-content>
 
 
-      <ion-button expand="block" shape="round" fill="outline" class="btn-con" (click)="slides.slideNext()">weiter</ion-button>
-
-    </ion-slide>
-
-    <ion-slide>
-
-      <!--
-      <ion-card-content>
-      <ion-item class="sl-inp-item">
-        <ion-label>Tage im Gym</ion-label>
-        <ion-select  formControlName="days" multiple="true" cancelText="Cancel" okText="Submit">
-          <ion-select-option value="1">Montag</ion-select-option>
-          <ion-select-option value="2">Dienstag</ion-select-option>
-          <ion-select-option value="3">Mittwoch</ion-select-option>
-          <ion-select-option value="4">Donnerstag</ion-select-option>
-          <ion-select-option value="5">Freitag</ion-select-option>
-          <ion-select-option value="6">Samstag</ion-select-option>
-          <ion-select-option value="7">Sonntag</ion-select-option>
-        </ion-select>
-      </ion-item>
-      </ion-card-content> -->
-
-      <ion-card-content>
-      <ion-item class="sl-inp-item">
-        <ion-label>Split</ion-label>
-        <ion-select formControlName="split" cancelText="Cancel" okText="Submit" (ionChange)="onSelectChange()" [(ngModel)]="selected_option">
-          <ion-select-option value="1">1 Tag im Gym</ion-select-option>
-          <ion-select-option value="2">2er Split</ion-select-option>
-          <ion-select-option value="3">3er Split</ion-select-option>
-          <ion-select-option value="4">4er Split</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-card-content>
-    
-
-    <ion-card-content [ngClass]="{'display':split1==true, 'hide':split1==false}">
-      <ion-item class="sl-inp-item">
-        <ion-label>Split 1: </ion-label>
-        <ion-input formControlName="split1"></ion-input>
-      </ion-item>
-    </ion-card-content>
-
-    <ion-card-content [ngClass]="{'display':split2==true, 'hide':split2==false}">
-      <ion-item class="sl-inp-item">
-        <ion-label>Split 2: </ion-label>
-        <ion-input formControlName="split2"></ion-input>
-      </ion-item>
-    </ion-card-content>
-
-    <ion-card-content [ngClass]="{'display':split3==true, 'hide':split3==false}">
-      <ion-item class="sl-inp-item">
-        <ion-label>Split 3: </ion-label>
-        <ion-input formControlName="split3"></ion-input>
-      </ion-item>
-    </ion-card-content>
-
-    <ion-card-content [ngClass]="{'display':split4==true, 'hide':split4==false}">
-      <ion-item class="sl-inp-item">
-        <ion-label>Split 4: </ion-label>
-        <ion-input formControlName="split4"></ion-input>
-      </ion-item>
-    </ion-card-content>
-
-
-
-
       <ion-button type="submit" expand="block" shape="round" fill="outline" class="btn-con">Finish</ion-button>
-      <ion-button color="tertiary" class="btn-con" href="/main/tabs/tab1">Dashboard</ion-button>
 
     </ion-slide>
 
