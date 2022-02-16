@@ -27,6 +27,7 @@ export class DataService {
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json; charset=UTF-8')
+      .set('rejectUnauthorized','false')
       .set('firstname', firstname)
       .set('lastname', lastname)
       .set('email', email)
@@ -43,6 +44,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Credentials','true')
     .set('Access-Control-Allow-Methods: OPTIONS, GET, POST','true')
@@ -54,7 +56,7 @@ export class DataService {
       password: password
     }
 
-    return this.http.post<IToken>(url + '/api/login', body);
+    return this.http.post<IToken>(url + '/api/login', body, { headers: headers });
 
   }
 
@@ -63,6 +65,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Authorization', authorization)
     .set('weight', String(weight))
     .set('weightDate', String(date));
@@ -76,6 +79,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Authorization', authorization)
     .set('type', String(type))
     .set('type_order', String(type_order));
@@ -87,6 +91,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Authorization', authorization)
 
     return this.http.post<any>(url + '/api/user/'+id+'/calcBMI', null, { headers: headers });
@@ -100,6 +105,7 @@ export class DataService {
     .set('Authorization', authorization)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Credentials','true')
     .set('Access-Control-Allow-Methods: OPTIONS, GET, POST','true')
@@ -113,6 +119,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Authorization', authorization)
     return this.http.get<any>(url + '/api/user/'+String(id)+'/currentWeight', { headers: headers });
   }
@@ -123,6 +130,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Authorization', authorization)
     .set('gewicht', String(gewicht))
     .set('name', String(name))
@@ -136,6 +144,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Authorization', authorization)
     return this.http.get<any>(url + '/api/user/'+String(id)+'/exercise', { headers: headers });
   }
@@ -145,6 +154,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Authorization', authorization)
     .set('gewicht', String(gewicht))
     .set('name', String(name))
@@ -158,6 +168,7 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
+    .set('rejectUnauthorized','false')
     .set('Authorization', authorization);
 
     return this.http.delete<any>(url + '/api/exercise/'+exercise_id, { headers: headers });
