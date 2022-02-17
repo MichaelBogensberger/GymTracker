@@ -107,14 +107,8 @@ export class DataService {
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json; charset=UTF-8')
-    .set('Authorization', authorization)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json; charset=UTF-8')
     .set('rejectUnauthorized','false')
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Credentials','true')
-    .set('Access-Control-Allow-Methods: OPTIONS, GET, POST','true')
-    .set('Access-Control-Allow-Headers','Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control')
+    .set('Authorization', authorization)
 
 
     return this.http.get<any>(url + '/api/user/', { headers: headers });
